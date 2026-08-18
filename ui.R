@@ -18,6 +18,32 @@ shinyUI(
             if (layer.closeTooltip) layer.closeTooltip();
           });
         });
+
+        // Ovanstående handler täcker bara omritning (nytt urval i sidopanelen).
+        // Den här delen täcker det vanligare fallet: musen far snabbt över flera
+        // tätt packade polygoner UTAN att något urval ändras, så mouseout på den
+        // gamla polygonen hinner inte alltid triggas innan mouseover på nästa -
+        // tooltips staplas då på varandra. Fixen: stäng alla öppna tooltips i
+        // capture-fasen, dvs INNAN leafletns egen mouseover-hantering hinner
+        // köra och öppna nästa tooltip.
+        $(document).on('shiny:value', function(e) {
+          var el = document.getElementById(e.target.id);
+          if (!el || !el.classList || !el.classList.contains('leaflet') || el.dataset.rdTooltipFix) return;
+
+          var widget = HTMLWidgets.find('#' + e.target.id);
+          if (!widget || !widget.getMap) return;
+          var map = widget.getMap();
+          if (!map) return;
+
+          el.dataset.rdTooltipFix = '1';
+          el.addEventListener('mouseover', function(ev) {
+            if (ev.target && ev.target.closest && ev.target.closest('.leaflet-interactive')) {
+              map.eachLayer(function(layer) {
+                if (layer.closeTooltip) layer.closeTooltip();
+              });
+            }
+          }, true);
+        });
       "))
     ),
 
