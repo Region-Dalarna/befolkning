@@ -556,14 +556,27 @@ shinyServer(function(input, output, session) {
 
   bas_karta <- function() {
     leaflet(options = leafletOptions(attributionControl = FALSE)) %>%
-      addProviderTiles(providers$CartoDB.Positron) %>%
+      addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
       setView(lng = start_vy$lng, lat = start_vy$lat, zoom = start_vy$zoom) %>%
       addEasyButton(easyButton(
         icon    = '<span style="font-size:17px;line-height:26px;">&#8962;</span>',
         title   = 'Återgå till utgångsläget',
         onClick = htmlwidgets::JS(sprintf(
           'function(btn, map){ map.setView([%f, %f], %d); }',
-          start_vy$lat, start_vy$lng, start_vy$zoom))))
+          start_vy$lat, start_vy$lng, start_vy$zoom))
+      )) %>%
+      htmlwidgets::onRender("
+      function(el, x) {
+        var map = this;
+        map.on('tooltipopen', function(e) {
+          map.eachLayer(function(layer) {
+            if (layer !== e.layer && layer.isTooltipOpen && layer.isTooltipOpen()) {
+              layer.closeTooltip();
+            }
+          });
+        });
+      }
+    ")
   }
 
   output$karta_flyttrel_kommun <- renderLeaflet(bas_karta())
