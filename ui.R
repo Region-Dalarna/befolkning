@@ -50,7 +50,7 @@ shinyUI(
     # ---- Header (matchar .rd-header i regiondalarna_ruf.css) --------------
     tags$div(
       class = 'rd-header',
-      tags$div(class = 'rd-header__title', 'Befolkningsutvecklingen i Dalarna - experimentyta för analyser'),
+      tags$div(class = 'rd-header__title', 'Befolkningen i Dalarna'),
       tags$a(
         class  = 'rd-header__right',
         href   = 'https://www.regiondalarna.se',
@@ -181,6 +181,7 @@ shinyUI(
                        div(class = 'rd-controls',
                            radioButtons('rel_typ', 'Visa',
                                         choices = c('Inflyttning', 'Utflyttning', 'Flyttnetto'),
+                                        selected = 'Flyttnetto',
                                         inline = TRUE),
                            sliderInput('rel_ar', 'Årsintervall',
                                        min = rel_ar_min, max = rel_ar_max,
