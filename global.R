@@ -1,4 +1,4 @@
-## Globala inställningar för Shinyappen: befolkning_testyta
+## Globala inställningar för Shinyappen: befolkning
 
 # Ladda nödvändiga paket
 library(shiny)

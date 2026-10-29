@@ -1,10 +1,10 @@
-# befolkning_testyta
+# befolkning
 
-Detta repository innehåller en Shinyapplikation (`befolkning_testyta`) för Samhällsanalys, Region Dalarna.
+Detta repository innehåller en Shinyapplikation (`befolkning`) för Samhällsanalys, Region Dalarna.
 
 ## Struktur
 
-- All appkod ligger i katalogen `app/`
+- All appkod ligger i repots rot
   - `ui.R`, `server.R`, `global.R`
   - `www/` för favicon, logotyp, CSS (`regiondalarna_ruf.css` + `app.css`) och `fonts/`
   - `R/` för hjälpfunktioner
@@ -17,5 +17,5 @@ Detta repository innehåller en Shinyapplikation (`befolkning_testyta`) för Sam
   - `.github/workflows/deploy.yml` – publicerar vid push till `publicera-publik` eller `publicera-intern`
   - `.github/workflows/avpublicera.yml` – tar bort appen från vald server (manuell trigger)
 
-  Appmapp på servern: `/srv/shiny-server/befolkning_testyta`.
+  Appmapp på servern: `/srv/shiny-server/befolkning`.
 
