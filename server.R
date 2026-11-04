@@ -1,5 +1,7 @@
 shinyServer(function(input, output, session) {
 
+  telemetri_server(telemetry, navigation_id = 'flikar', forsta_flik = 'Översikt')
+
   # ==== Gemensamma reaktiva uttryck ==========================================
 
   ar_span <- reactive(seq(input$ar_intervall[1], input$ar_intervall[2]))

@@ -1,12 +1,16 @@
 source('global.R')
 
 shinyUI(
-  fluidPage(
-    shinyjs::useShinyjs(),
+  tagList(
     tags$head(
+      tags$title('Befolkningen i Dalarna'),
       tags$link(rel = 'icon', type = 'image/x-icon', href = 'favicon.ico'),
       tags$link(rel = 'stylesheet', type = 'text/css', href = 'regiondalarna_ruf.css'),
       tags$link(rel = 'stylesheet', type = 'text/css', href = 'app.css?v=6'),
+
+      # använd telemetry-paketet om det finns konfigurerat på maskinen (kommer att fungera på servrarna men ignoreras om man kör appen lokalt)
+      telemetri_ui(telemetry),
+
       tags$script(HTML("
         Shiny.addCustomMessageHandler('rd_stang_tooltips', function(mapId) {
           var el = document.getElementById(mapId);
@@ -47,7 +51,9 @@ shinyUI(
       "))
     ),
 
-    # ---- Header (matchar .rd-header i regiondalarna_ruf.css) --------------
+    shinyjs::useShinyjs(),
+
+    # ---- Header (ligger utanför fluidPage så den spänner hela bredden) ----
     tags$div(
       class = 'rd-header',
       tags$div(class = 'rd-header__title', 'Befolkningen i Dalarna'),
@@ -55,12 +61,12 @@ shinyUI(
         class  = 'rd-header__right',
         href   = 'https://www.regiondalarna.se',
         target = '_blank',
-        tags$img(src = 'logo_liggande_fri_vit.png', alt = 'Region Dalarna'),
-        tags$span('Samhällsanalys')
+        tags$img(src = 'logo_liggande_fri_vit.png', alt = 'Region Dalarna')
       )
     ),
 
     # ---- Innehåll: sidopanel + flikar --------------------------------------
+    fluidPage(
     tags$div(
       class = 'rd-app',
 
@@ -344,6 +350,7 @@ shinyUI(
                        )))
         )
       )
+    )
     ),
 
     # ---- Footer (matchar .rd-footer i regiondalarna_ruf.css) --------------

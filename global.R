@@ -20,6 +20,9 @@ options(shiny.sanitize.errors = FALSE)
 
 source("https://raw.githubusercontent.com/Region-Dalarna/funktioner/main/func_shinyappar.R", encoding = "utf-8", echo = FALSE)
 
+# ---- Telemetri (användningsstatistik, se Adminportalen) --------------------
+telemetry <- skapa_telemetry("befolkning")
+
 # ==== 1. Designtokens (speglar regiondalarna_ruf.css) ========================
 rd_farg <- c(
   primary      = "#158daf",
