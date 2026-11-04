@@ -1,5 +1,7 @@
 source('global.R')
 
+APP_BESKRIVNING <- 'Befolkningsstatistik för Dalarna och länets kommuner - förändring, flyttningar, in- och utvandring, födda/döda samt befolkningsprognoser.'
+
 shinyUI(
   tagList(
     tags$head(
