@@ -2,10 +2,11 @@ source('global.R')
 
 APP_BESKRIVNING <- 'Befolkningsstatistik för Dalarna och länets kommuner - förändring, flyttningar, in- och utvandring, födda/döda samt befolkningsprognoser.'
 
+APP_TITEL <- 'Befolkningen i Dalarna'
+
 shinyUI(
   tagList(
     tags$head(
-      tags$title('Befolkningen i Dalarna'),
       tags$link(rel = 'icon', type = 'image/x-icon', href = 'favicon.ico'),
       tags$link(rel = 'stylesheet', type = 'text/css', href = 'regiondalarna_ruf.css'),
       tags$link(rel = 'stylesheet', type = 'text/css', href = 'app.css?v=6'),
@@ -58,7 +59,7 @@ shinyUI(
     # ---- Header (ligger utanför fluidPage så den spänner hela bredden) ----
     tags$div(
       class = 'rd-header',
-      tags$div(class = 'rd-header__title', 'Befolkningen i Dalarna'),
+      tags$div(class = 'rd-header__title', APP_TITEL),
       tags$a(
         class  = 'rd-header__right',
         href   = 'https://www.regiondalarna.se',
@@ -69,6 +70,7 @@ shinyUI(
 
     # ---- Innehåll: sidopanel + flikar --------------------------------------
     fluidPage(
+    title = APP_TITEL,  # webbläsarflikens rubrik
     tags$div(
       class = 'rd-app',
 
