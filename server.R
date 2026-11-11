@@ -559,7 +559,7 @@ shinyServer(function(input, output, session) {
 
   bas_karta <- function() {
     leaflet(options = leafletOptions(zoomSnap = 0.25, zoomDelta = 0.5)) %>%
-      rdshinyappar::lagg_till_bakgrundskarta() %>%
+      rdshinyappar::lagg_till_bakgrundskarta(etikett_opacitet = 0.3) %>%
       setView(lng = start_vy$lng, lat = start_vy$lat, zoom = start_vy$zoom) %>%
       addEasyButton(easyButton(
         icon    = '<span style="font-size:17px;line-height:26px;">&#8962;</span>',
