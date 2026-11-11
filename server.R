@@ -557,8 +557,8 @@ shinyServer(function(input, output, session) {
   start_vy <- list(lng = 15.5, lat = 62, zoom = 4)
 
   bas_karta <- function() {
-    leaflet(options = leafletOptions(attributionControl = FALSE)) %>%
-      addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
+    leaflet() %>%
+      rdshinyappar::lagg_till_bakgrundskarta() %>%
       setView(lng = start_vy$lng, lat = start_vy$lat, zoom = start_vy$zoom) %>%
       addEasyButton(easyButton(
         icon    = '<span style="font-size:17px;line-height:26px;">&#8962;</span>',

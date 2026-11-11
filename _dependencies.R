@@ -3,4 +3,5 @@
 library(DBI)
 library(RPostgres)
 library(sf)
+library(rdshinyappar)   # lagg_till_bakgrundskarta() i kartan
 # ... lägg till fler paket vid behov
