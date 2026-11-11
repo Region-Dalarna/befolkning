@@ -203,10 +203,10 @@ shinyUI(
                        div(class = 'rd-map-grid',
                            div(
                              h3(textOutput('rubrik_karta_kommun', inline = TRUE)),
-                             leafletOutput('karta_flyttrel_kommun', height = 460)),
+                             leafletOutput('karta_flyttrel_kommun', height = 580)),
                            div(
                              h3(textOutput('rubrik_karta_lan', inline = TRUE)),
-                             leafletOutput('karta_flyttrel_lan', height = 460))),
+                             leafletOutput('karta_flyttrel_lan', height = 580))),
                        p(class = 'rd-kalla', 'Källa: Statistiska centralbyrån (SCB), bearbetning av Samhällsanalys, Region Dalarna')),
                    div(class = 'rd-card',
                        h2(textOutput('rubrik_flyttrel_tabell', inline = TRUE)),

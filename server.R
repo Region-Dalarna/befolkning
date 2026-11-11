@@ -554,17 +554,18 @@ shinyServer(function(input, output, session) {
   # 2) en observer uppdaterar polygoner och teckenförklaring via leafletProxy
   #    när urvalet eller vald flyttyp ändras - utan att röra zoom/panorering
 
-  start_vy <- list(lng = 15.5, lat = 62, zoom = 4)
+  # Sverige fyller kartan på höjden (ca 14 breddgrader), därför fraktionell zoom (zoomSnap) mellan 4 och 5
+  start_vy <- list(lng = 16.5, lat = 62.2, zoom = 4.5)
 
   bas_karta <- function() {
-    leaflet() %>%
+    leaflet(options = leafletOptions(zoomSnap = 0.25, zoomDelta = 0.5)) %>%
       rdshinyappar::lagg_till_bakgrundskarta() %>%
       setView(lng = start_vy$lng, lat = start_vy$lat, zoom = start_vy$zoom) %>%
       addEasyButton(easyButton(
         icon    = '<span style="font-size:17px;line-height:26px;">&#8962;</span>',
         title   = 'Återgå till utgångsläget',
         onClick = htmlwidgets::JS(sprintf(
-          'function(btn, map){ map.setView([%f, %f], %d); }',
+          'function(btn, map){ map.setView([%f, %f], %f); }',
           start_vy$lat, start_vy$lng, start_vy$zoom))
       )) %>%
       htmlwidgets::onRender("

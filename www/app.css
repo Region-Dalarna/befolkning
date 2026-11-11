@@ -167,7 +167,9 @@ input[type='checkbox'] {
 /* ---- Två kartor sida vid sida i flyttrelationsfliken ---- */
 .rd-map-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Sverige är smalt och högt: kartorna behöver inte vara bredare än så här */
+  grid-template-columns: repeat(2, minmax(0, 520px));
+  justify-content: start;
   gap: 16px;
 }
 .rd-map-grid h3 {
@@ -176,7 +178,7 @@ input[type='checkbox'] {
   margin: 0 0 8px 0;
 }
 @media (max-width: 1100px) {
-  .rd-map-grid { grid-template-columns: 1fr; }
+  .rd-map-grid { grid-template-columns: minmax(0, 520px); }
 }
 
 /* ---- ggiraph: låt SVG:n fylla kortets bredd ---- */
