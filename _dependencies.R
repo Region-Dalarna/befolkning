@@ -6,3 +6,4 @@ library(sf)
 library(rdshinyappar)   # lagg_till_bakgrundskarta() i kartan
 library(shiny.telemetry) # anvands av skapa_telemetry() i rdshinyappar - maste finnas i renv.lock
 # ... lägg till fler paket vid behov
+library(shiny.telemetry) # anvands av skapa_telemetry() i rdshinyappar - maste finnas i renv.lock
