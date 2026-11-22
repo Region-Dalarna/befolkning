@@ -14,11 +14,10 @@ library(ggplot2)
 library(sf)
 library(leaflet)
 library(writexl)   # för nedladdning av dataset som Excel-filer
+library(rdshinyappar)
 
 # Allmänna options - TRUE = visa inte R-felmeddelanden i appen, FALSE = visa felmeddelanden från R på webben
 options(shiny.sanitize.errors = FALSE)
-
-source("https://raw.githubusercontent.com/Region-Dalarna/funktioner/main/func_shinyappar.R", encoding = "utf-8", echo = FALSE)
 
 # ---- Telemetri (användningsstatistik, se Adminportalen) --------------------
 telemetry <- skapa_telemetry("befolkning")
