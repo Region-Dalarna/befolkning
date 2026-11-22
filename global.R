@@ -15,6 +15,9 @@ library(sf)
 library(leaflet)
 library(writexl)   # för nedladdning av dataset som Excel-filer
 library(rdshinyappar)
+library(DBI)          # Id() mm. - laddades tidigare av func_shinyappar.R
+library(RPostgres)
+library(rdshinyappar)
 
 # Allmänna options - TRUE = visa inte R-felmeddelanden i appen, FALSE = visa felmeddelanden från R på webben
 options(shiny.sanitize.errors = FALSE)
