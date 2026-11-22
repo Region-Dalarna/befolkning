@@ -18,8 +18,9 @@ library(rdshinyappar)
 library(DBI)          # Id() mm. - laddades tidigare av func_shinyappar.R
 library(RPostgres)
 
-# Allmänna options - TRUE = visa inte R-felmeddelanden i appen, FALSE = visa felmeddelanden från R på webben
-options(shiny.sanitize.errors = FALSE)
+# Felmeddelanden: på servern visas inga R-fel för användaren (sanitize = TRUE); felet skrivs ändå till appens logg
+# (se Adminportalen, Driftstatus - Loggar). Lokalt i RStudio visas felen i klartext för att underlätta felsökning.
+options(shiny.sanitize.errors = !interactive())
 
 # ---- Telemetri (användningsstatistik, se Adminportalen) --------------------
 telemetry <- skapa_telemetry("befolkning")
